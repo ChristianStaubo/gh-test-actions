@@ -1,0 +1,17 @@
+name: Issue Tracker
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+
+jobs:
+  log-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Issue Details
+        run: |
+          echo "Issue Event Type: ${{ github.event.action }}"
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Number: ${{ github.event.issue.number }}"
+          echo "Issue Creator: ${{ github.event.issue.user.login }}"
+          echo "Issue URL: ${{ github.event.issue.html_url }}"
